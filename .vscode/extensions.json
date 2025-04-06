@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "EditorConfig.EditorConfig",
+        "ms-playwright.playwright",
+        "alexkrechik.cucumberautocomplete"
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+    "files": {
+        "include": ["src/**/*.ts", "src/**/*.tsx", "specs/**/*.ts"]
+    },
+    "organizeImports": {
+        "enabled": false
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "correctness": {
+                "noChildrenProp": "off",
+                "useJsxKeyInIterable": "off"
+            }
+        }
+    },
+    "formatter": {
+        "useEditorconfig": true
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "single",
+            "jsxQuoteStyle": "double",
+            "semicolons": "asNeeded",
+            "arrowParentheses": "asNeeded"
+        }
+    }
+}

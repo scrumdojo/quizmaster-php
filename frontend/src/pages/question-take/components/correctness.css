@@ -1,0 +1,11 @@
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+
+.missed {
+    color: orange;
+}

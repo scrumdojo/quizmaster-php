@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - php
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    container:
+      image: ghcr.io/scrumdojo/quizmaster-php-devenv:v1
+
+    steps:
+      - name: Start PostgreSQL
+        run: /usr/local/bin/services.sh
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install frontend dependencies and Playwright
+        working-directory: frontend
+        run: pnpm ci:install
+
+      - name: Install backend dependencies
+        working-directory: backend
+        run: composer update
+
+      - name: Type check & lint & format frontend
+        working-directory: frontend
+        run: pnpm ci:code
+
+      - name: Build frontend + DB migrations
+        working-directory: frontend
+        run: pnpm ci:build
+
+      - name: Run backend tests
+        working-directory: backend
+        run: ./vendor/bin/phpunit
+
+      - name: Run end-to-end tests
+        working-directory: frontend
+        run: pnpm ci:test:e2e

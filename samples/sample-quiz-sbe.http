@@ -1,0 +1,71 @@
+POST http://localhost:8080/api/quiz-question HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "question": "What is the primary goal of Specification by Example (SBE)?",
+    "answers": [
+        "To replace all documentation with automated tests.",
+        "To create shared understanding through examples.",
+        "To ensure that only developers write specifications.",
+        "To eliminate the need for testers."
+    ],
+    "explanations": [
+        "While SBE often leads to automated tests, its primary goal is not to replace all documentation but to enhance understanding.",
+        "The main purpose of SBE is to create a shared understanding of requirements by using examples that illustrate how the system should behave.",
+        "SBE promotes collaboration among team members, not limiting specifications to developers only.",
+        "SBE is not about eliminating testers but fostering collaboration among all roles, including testers."
+    ],
+    "questionExplanation": "Specification by Example focuses on using concrete examples to align understanding across stakeholders and the development team.",
+    "correctAnswers": [
+        1
+    ]
+}
+
+###
+
+POST http://localhost:8080/api/quiz-question HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 2,
+    "question": "Which of the following is a key practice of Specification by Example?",
+    "answers": [
+        "Defining acceptance criteria using examples.",
+        "Creating detailed technical specifications upfront.",
+        "Conducting formal code reviews before writing tests.",
+        "Automating tests based on examples provided."
+    ],
+    "explanations": [
+        "SBE emphasizes defining acceptance criteria using examples to ensure clarity and shared understanding.",
+        "SBE discourages heavy upfront documentation in favor of iterative collaboration.",
+        "While code reviews are valuable, they are not a specific practice of SBE.",
+        "Automating tests from examples ensures that the system meets the defined behaviors and helps prevent regressions."
+    ],
+    "questionExplanation": "Key practices in Specification by Example include defining acceptance criteria through examples and automating those examples as tests to ensure the system meets expectations.",
+    "correctAnswers": [0, 3]
+}
+
+###
+
+POST http://localhost:8080/api/quiz-question HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 3,
+    "question": "What is an advantage of using examples in Specification by Example?",
+    "answers": [
+        "It eliminates the need for communication between stakeholders.",
+        "It reduces misunderstandings about requirements.",
+        "It guarantees that all requirements are implemented correctly.",
+        "It helps detect ambiguous or unclear requirements early."
+    ],
+    "explanations": [
+        "SBE enhances communication rather than eliminating it; collaboration is central to the approach.",
+        "Examples reduce misunderstandings by clarifying requirements in a concrete way that all stakeholders can understand.",
+        "While SBE reduces risks of incorrect implementations, it does not guarantee perfection. Effective implementation depends on team execution.",
+        "By discussing examples early, the team can identify and resolve ambiguities before development begins."
+    ],
+    "questionExplanation": "Examples in Specification by Example act as a communication tool that clarifies requirements, reduces misunderstandings, and identifies ambiguities early in the process.",
+    "correctAnswers": [1, 3]
+}

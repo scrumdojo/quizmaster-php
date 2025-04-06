@@ -1,0 +1,21 @@
+{
+    "name": "Quizmaster PHP Dev Environment",
+    "image": "ghcr.io/scrumdojo/quizmaster-php-devenv:v1",
+    "postStartCommand": "/usr/local/bin/services.sh",
+    "forwardPorts": [
+        2222,  // SSH
+        3333,  // Playwright UI
+        5173,  // Vite dev server
+        5432,  // PostgreSQL server
+        8080   // Spring Boot server
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "EditorConfig.EditorConfig",
+                "ms-playwright.playwright",
+                "alexkrechik.cucumberautocomplete"
+            ]
+        }
+    }
+}

@@ -1,0 +1,65 @@
+
+.question-page {
+    padding: 10px 25px 30px;
+    background: linear-gradient(180deg, rgb(182, 244, 146), rgb(51, 139, 147));
+
+    #question-create-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        textarea {
+            width: 100%;
+            font-size: 1.2em;
+        }
+
+        .answer-row {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            input[type="text"] { flex: 1 }
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+
+        input[type="checkbox"].answer-isCorrect-checkbox-multi , input[type="checkbox"].answer-isCorrect-checkbox {
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                width: 20px;
+                height: 20px;
+                border: 2px solid #000;
+                border-radius: 50%;
+                position: relative;
+                cursor: pointer;
+              &:checked::before {
+                content: '';
+                width: 12px;
+                height: 12px;
+                background-color: #000;
+                border-radius: 50%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+            }
+
+            input[type="checkbox"].answer-isCorrect-checkbox-multi {
+                border-radius: 0;
+                &:checked::before {
+                    border-radius: 0;
+                }
+            }
+    }
+
+    #question-link, #question-edit-link {
+        margin-top: 15px;
+        display: block;
+        font-size: larger;
+    }
+}

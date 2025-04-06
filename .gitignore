@@ -1,0 +1,13 @@
+.idea/
+
+backend/.phpunit.cache/
+backend/var/
+backend/vendor/
+backend/public/index.html
+backend/public/assets
+
+frontend/.features-gen
+frontend/node_modules/
+frontend/test-results
+frontend/tsconfig.app.tsbuildinfo
+frontend/tsconfig.node.tsbuildinfo

@@ -1,0 +1,17 @@
+POST http://localhost:8080/api/quiz-question HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 4,
+    "question": "Why is the sky blue?",
+    "answers": [
+        "Because of Rayleigh scattering",
+        "Because of the ocean's reflection"
+    ],
+    "explanations": [
+        "This is the scientific reason.",
+        "This is a common misconception."
+    ],
+    "questionExplanation": "Light scattering causes this effect.",
+    "correctAnswers": [0]
+}

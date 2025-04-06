@@ -1,0 +1,17 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0;
+}
+
+.evaluation-button {
+    border: 1px solid #359b74;
+    background-color: #bdf1ea;
+    color: #666;
+    padding: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+    border-radius: 5px;
+    &:hover {
+        background-color: #8bdbd1;
+    }
+}

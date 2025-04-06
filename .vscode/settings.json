@@ -1,0 +1,6 @@
+{
+    "cucumberautocomplete.steps": ["frontend/specs/steps/**/*.ts"],
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit"
+      }
+}
