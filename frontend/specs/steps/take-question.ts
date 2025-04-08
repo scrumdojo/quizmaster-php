@@ -95,10 +95,9 @@ Then('I see individual feedback:', async function (dataTable: DataTable) {
     const rows = dataTable.hashes()
 
     for (const row of rows) {
-        const { answer, evaluation, feedback } = row
+        const { answer, evaluation } = row
         const answerRow = this.page.locator(`[data-test-id="answer-row-${answer}"]`)
-        await expect(answerRow).toContainText(evaluation)
-        await expect(answerRow).toContainText(feedback)
+        await expect(answerRow).toHaveClass(evaluation === 'correct' ? 'correct' : 'incorrect')
     }
 })
 

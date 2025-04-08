@@ -1,5 +1,4 @@
 import { Correctness, Explanation } from 'pages/question-take'
-import { AnswerCorrectness } from './answer-correctness'
 
 interface AnswerFeedbackProps {
     readonly correct: boolean
@@ -10,9 +9,7 @@ interface AnswerFeedbackProps {
 export const AnswerFeedback = (props: AnswerFeedbackProps) => (
     <span>
         &nbsp;
-        {props.isMultipleChoice ? (
-            <AnswerCorrectness isCorrect={props.correct} />
-        ) : (
+        {props.isMultipleChoice ? '' : (
             <Correctness isCorrect={props.correct} />
         )}
         &nbsp;

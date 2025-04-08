@@ -32,7 +32,7 @@ export const QuestionForm = (props: QuestionFormProps) => {
         <form onSubmit={handleSubmit} id="question-form">
             <h1>{props.question.question}</h1>
             <Group name="answer" data-test-id="question-form">
-                <ul>
+                <ul className="answer-list">
                     {props.question.answers.map((answer, idx) => (
                         <Answer
                             key={answer}

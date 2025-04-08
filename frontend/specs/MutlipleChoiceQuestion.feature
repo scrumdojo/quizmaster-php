@@ -18,21 +18,21 @@ Feature: Answering a quiz question with multiple choice
     When I take question "Europe"
     And I answer "<answer>"
     Then I see individual feedback:
-      | answer  | evaluation | feedback           |
-      | Italy   | <italy>    | <italy_feedback>   |
-      | France  | <france>   | <france_feedback>  |
-      | Morocco | <morocco>  | <morocco_feedback> |
-      | Spain   | <spain>    | <spain_feedback>   |
+      | answer  | evaluation |
+      | Italy   | <italy>    |
+      | France  | <france>   |
+      | Morocco | <morocco>  |
+      | Spain   | <spain>    |
     And I see the question explanation
 
     Examples:
-      | answer                        | italy | italy_feedback | france | france_feedback | morocco | morocco_feedback | spain | spain_feedback | final_feedback                                            |
-      | Italy                         |       |               | ❌      | Incorrect!      |        |                 | ❌     | Incorrect! | Italy, France, and Spain are in Europe. Morocco is in Africa. |
-      | Italy, France                 |       |               |         |                 |        |                 | ❌     | Incorrect! | Italy, France, and Spain are in Europe. Morocco is in Africa. |
-      | Italy, France, Morocco        |       |               |         |                 | ❌      | Incorrect!       | ❌     | Incorrect! | Italy, France, and Spain are in Europe. Morocco is in Africa. |
-      | Italy, France, Spain          |       |               |         |                  |        |                  |        |             | Italy, France, and Spain are in Europe. Morocco is in Africa. |
-      | Italy, France, Morocco, Spain |       |               |         |                 | ❌       | Incorrect!       |      |            | Italy, France, and Spain are in Europe. Morocco is in Africa. |
-      | France, Morocco, Spain        | ❌   | Incorrect!     |         |                 | ❌       | Incorrect!       |      |             | Italy, France, and Spain are in Europe. Morocco is in Africa. |
+      | answer                        | italy      | france     | morocco    | spain |
+      | Italy                         | correct    | incorrect  | correct    | incorrect |
+      | Italy, France                 | correct    | correct    | correct    | incorrect |
+      | Italy, France, Morocco        | correct    | correct    | incorrect  | incorrect |
+      | Italy, France, Spain          | correct    | correct    | correct    | correct |
+      | Italy, France, Morocco, Spain | correct    | correct    | incorrect  | correct |
+      | France, Morocco, Spain        | incorrect  | correct    | incorrect  | correct |
 
 
   Scenario: Explanations for all answers are displayed after answering the question
