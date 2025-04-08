@@ -33,7 +33,7 @@ export const QuizQuestionForm = (props: QuizQuestionProps) => {
             total: quiz.length,
             answers: quiz.map((question, idx) => ({
                 ...question,
-                answer: question.answers[quizState[idx][0]], // TODO: support multiple answers
+                userAnswers: quizState[idx],
                 feedback: isAnsweredCorrectly(quizState[idx], question.correctAnswers) ? 'Correct' : 'Incorrect',
             })),
         })

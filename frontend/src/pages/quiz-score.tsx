@@ -1,4 +1,4 @@
-import type { QuizQuestion } from '../model/quiz-question.ts'
+import type { AnswerIdxs, QuizQuestion } from '../model/quiz-question.ts'
 
 export interface QuizScore {
     readonly correct: number
@@ -7,7 +7,7 @@ export interface QuizScore {
 }
 
 export interface QuizQuestionAnswered extends QuizQuestion {
-    answer: string
+    userAnswers: AnswerIdxs
     feedback: string
 }
 
@@ -39,13 +39,11 @@ export const QuizScore = ({ score, answers }: QuizScoreProps) => {
 
             <h2>Recap</h2>
             <ul>
-                {answers.map(({ id, question, answer, feedback }, index) => (
-                    <li key={index} id={`answers-${id}`}>
-                        <p className="question">{question}</p>
-                        <p className="answer">{answer}</p>
-                        <p className="feedback">{feedback}</p>
-                {answers.map(({ id, question, answer, feedback }) => (
+                {answers.map(({ id, question, userAnswers, answers, feedback }) => (
                     <li key={id} id={`answers-${id}`}>
+                        <span className="question">{question}</span>
+                        <span className="answer">{userAnswers.map(id => `${answers[id]}`)}</span>
+                        <span className="feedback">{feedback}</span>
                     </li>
                 ))}
             </ul>
