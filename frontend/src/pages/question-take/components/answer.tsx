@@ -1,6 +1,7 @@
 import type React from 'react'
 
 import { AnswerFeedback } from 'pages/question-take'
+import { Checkbox, Radio } from '@mui/material'
 
 export type AnswerProps = {
     readonly isMultipleChoice: boolean
@@ -14,7 +15,7 @@ export type AnswerProps = {
 
 export const Answer = (props: AnswerProps) => {
     const answerId = `answer-row-${props.idx}`
-    const checkType = props.isMultipleChoice ? 'checkbox' : 'radio'
+    const AnswerInput = props.isMultipleChoice ? Checkbox : Radio
     const checkName = props.isMultipleChoice ? answerId : 'answer'
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +24,7 @@ export const Answer = (props: AnswerProps) => {
 
     return (
         <li data-test-id={`answer-row-${props.answer}`} key={props.idx}>
-            <input type={checkType} name={checkName} id={answerId} value={props.answer} onChange={onChange} />
+            <AnswerInput value={props.answer} id={answerId} onChange={onChange} name={checkName} />
             <label htmlFor={answerId}>
                 {props.answer}
                 {props.showFeedback && (

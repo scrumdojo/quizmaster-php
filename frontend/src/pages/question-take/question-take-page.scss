@@ -11,41 +11,6 @@ ul li {
     margin-bottom: 0.5em;
 }
 
-ul li input[type="checkbox"],
-ul li input[type="radio"] {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid black;
-    background-color: white;
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: background-color 0.4s ease, border-color 0.4s ease;
-}
-
-ul li input[type="checkbox"]:hover,
-ul li input[type="radio"]:hover {
-    background-color: #bbb;
-}
-
-ul li input[type="checkbox"]:checked,
-ul li input[type="radio"]:checked {
-    background-color: black;
-    border-color: black;
-}
-
-ul li input[type="checkbox"]:checked::after,
-ul li input[type="radio"]:checked::after {
-    content: "✔";
-    font-size: 14px;
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 .container {
     display: flex;
     flex-direction: column;

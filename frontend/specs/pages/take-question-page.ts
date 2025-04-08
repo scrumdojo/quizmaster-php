@@ -13,6 +13,7 @@ export class TakeQuestionPage {
     answerExplanationLocatorForAnswer = (answer: string) =>
         this.answerLocator(answer)
             .locator('..')
+            .locator('..')
             .locator('span.explanation')
             .locator('..')
             .locator('span.explanationText')
