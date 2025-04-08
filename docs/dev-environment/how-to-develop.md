@@ -21,7 +21,6 @@ In the `backend` directory:
 
 ```sh
 composer update
-php bin/console doctrine:migrations:migrate --no-interaction
 ```
 
 ## 🚀 Running Quizmaster
@@ -35,7 +34,7 @@ To rebuild the front end, run `pnpm build` in the `frontend` directory. The fron
 To run the application, in the `backend` directory execute:
 
 ```
-./devserver
+./devserver.sh
 ```
 
 ## <img src="https://vitejs.dev/logo.svg" height="20"> Running Vite Development Server
