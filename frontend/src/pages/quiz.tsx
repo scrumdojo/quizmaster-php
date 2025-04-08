@@ -31,6 +31,11 @@ export const QuizQuestionForm = (props: QuizQuestionProps) => {
             correct: quiz.filter((question, idx) => isAnsweredCorrectly(quizState[idx], question.correctAnswers))
                 .length,
             total: quiz.length,
+            answers: quiz.map((question, idx) => ({
+                ...question,
+                answer: question.answers[quizState[idx][0]], // TODO: support multiple answers
+                feedback: isAnsweredCorrectly(quizState[idx], question.correctAnswers) ? 'Correct' : 'Incorrect',
+            })),
         })
 
     return (
@@ -67,5 +72,9 @@ export const Quiz = () => {
     const [quizScore, setQuizScore] = useState<QuizScore | null>(null)
     const isEvaluated = quizScore !== null
 
-    return isEvaluated ? <QuizScore score={quizScore} /> : <QuizQuestionForm onEvaluate={setQuizScore} />
+    return isEvaluated ? (
+        <QuizScore score={quizScore} answers={quizScore?.answers} />
+    ) : (
+        <QuizQuestionForm onEvaluate={setQuizScore} />
+    )
 }
