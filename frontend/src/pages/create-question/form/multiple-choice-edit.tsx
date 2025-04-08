@@ -1,3 +1,5 @@
+import { Checkbox } from '@mui/material'
+
 interface MultipleChoiceEditProps {
     readonly isMultipleChoice: boolean
     readonly setIsMultipleChoice: (isMultipleChoice: boolean) => void
@@ -5,9 +7,8 @@ interface MultipleChoiceEditProps {
 
 export const MultipleChoiceEdit = ({ isMultipleChoice, setIsMultipleChoice }: MultipleChoiceEditProps) => (
     <div>
-        <input
+        <Checkbox
             id="is-multiple-choice"
-            type="checkbox"
             checked={isMultipleChoice}
             onChange={e => setIsMultipleChoice(e.target.checked)}
         />
