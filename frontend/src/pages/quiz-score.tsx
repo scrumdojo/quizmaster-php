@@ -14,15 +14,15 @@ export const QuizScore = ({ score }: QuizScoreProps) => {
 
     return (
         <>
-            <h1>Výsledok testu</h1>
+            <h1>Výsledek testu</h1>
             <p>
-                Správne odpovede: <span id="correct-answers">{correct}</span>
+                Správné odpovědi: <span id="correct-answers">{correct}</span>
             </p>
             <p>
-                Celkový počet otázok: <span id="total-questions">{total}</span>
+                Celkový počet otázek: <span id="total-questions">{total}</span>
             </p>
             <p>
-                Úspešnosť(%): <span id="percentage-result">{percentage.toFixed(2)}</span>
+                Úspešnost(%): <span id="percentage-result">{percentage.toFixed(2)}</span>
             </p>
             <p>
                 Stav: <span id="text-result">{result}</span>
