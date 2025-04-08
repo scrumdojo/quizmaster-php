@@ -1,4 +1,4 @@
-import { QuizQuestion } from '../model/quiz-question.ts'
+import type { QuizQuestion } from '../model/quiz-question.ts'
 
 export interface QuizScore {
     readonly correct: number
@@ -44,6 +44,8 @@ export const QuizScore = ({ score, answers }: QuizScoreProps) => {
                         <p className="question">{question}</p>
                         <p className="answer">{answer}</p>
                         <p className="feedback">{feedback}</p>
+                {answers.map(({ id, question, answer, feedback }) => (
+                    <li key={id} id={`answers-${id}`}>
                     </li>
                 ))}
             </ul>
