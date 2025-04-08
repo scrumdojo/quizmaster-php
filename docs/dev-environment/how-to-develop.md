@@ -20,7 +20,7 @@ pnpm build
 In the `backend` directory:
 
 ```sh
-composer update
+composer install
 ```
 
 ## 🚀 Running Quizmaster
