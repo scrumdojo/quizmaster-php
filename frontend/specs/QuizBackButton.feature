@@ -5,13 +5,13 @@ Feature: Quiz back navigation
     Then I should not see the back button
 
   Scenario: Back button is available on quiz second question
-    Given I visit the quiz page
+    Given I visit the quiz "X" page
     When I answer "Green"
     And I click the next question
     Then I should see the back button
 
   Scenario: See the correct buttons when go back to previous question
-    Given I visit the quiz page
+    Given I visit the quiz "X" page
     When I answer "Green"
     And I click the next question
     And I click the back button
