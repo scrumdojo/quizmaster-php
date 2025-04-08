@@ -17,7 +17,7 @@ Feature: Evaluate quiz score
     * saved and bookmarked as "France"
 
 Scenario: Quiz score all question are correct
-  Given I visit the quiz page
+  Given I visit the quiz "X" page
   When I answer "Blue"
   * I click the next button
   * I answer "Paris"
@@ -27,7 +27,7 @@ Scenario: Quiz score all question are correct
   Then I see question 2 "What is capital of France?" with answer "Paris" and feedback is "Correct"
 
 Scenario: Quiz score one question is inccorect
-  Given I visit the quiz page
+  Given I visit the quiz "X" page
   When I answer "Green"
   * I click the next button
   * I answer "Paris"

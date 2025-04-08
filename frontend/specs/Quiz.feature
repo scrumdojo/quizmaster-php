@@ -18,26 +18,26 @@ Feature: Take a quiz
     # Given a quiz containing questions "Sky" and "France"
 
   Scenario: Quiz page is available
-    Given I visit the quiz page
+    Given I visit the quiz "X" page
     Then I should see heading "Quiz"
 
   Scenario: Quiz question is displayed
-    Given I visit the quiz page
-    Then I see the first question
+    Given I visit the quiz "X" page
+    Then I see the question "Sky"
 
   Scenario: Quiz question is answered
-    Given I visit the quiz page
+    Given I visit the quiz "X" page
     When I answer "Green"
     Then I should see the next button
 
   Scenario: Quiz question is answered and the next button is clicked
-    Given I visit the quiz page
+    Given I visit the quiz "X" page
     When I answer "Green"
     And I click the next button
     Then I should see the next question
 
   Scenario: User proceed to last question
-    Given I visit the quiz page
+    Given I visit the quiz "X" page
     When I answer "Green"
     And I click the next button
     Then I should see the next question
@@ -47,7 +47,7 @@ Feature: Take a quiz
     Then I should not see the next button
 
   Scenario: User navigate to evaluation page
-    Given I visit the quiz page
+    Given I visit the quiz "X" page
     When I answer "Green"
     And I click the next button
     Then I should see the next question
@@ -56,7 +56,7 @@ Feature: Take a quiz
     Then I click the evaluate button
 
   Scenario: User reloads page on answered question
-    Given I visit the quiz page
+    Given I visit the quiz "X" page
     When I answer "Green"
     * I click the next button
     * I check answer "Lyon,Paris"
@@ -65,11 +65,11 @@ Feature: Take a quiz
     Then no answer is selected
 
   Scenario: Progress bar is shown on first quiz page
-    Given I visit the quiz page
+    Given I visit the quiz "X" page
     Then I should see the progress bar showing page 1 of 2
 
   Scenario: Progress bar is full on last quiz page
-    Given I visit the quiz page
+    Given I visit the quiz "X" page
     When I answer "Green"
     And I click the next button
     Then I should see the progress bar showing page 2 of 2

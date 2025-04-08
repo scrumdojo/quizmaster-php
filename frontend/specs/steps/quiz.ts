@@ -2,17 +2,17 @@ import { expect } from '@playwright/test'
 import { expectTextToBe } from './common.ts'
 import { Given, When, Then } from './fixture.ts'
 
-Given('I visit the quiz page', async function () {
-    await this.page.goto('/quiz')
+Given('I visit the quiz {string} page', async function (quiz: string) {
+    await this.page.goto('/quiz/' + quiz)
 })
 
 Then('I should see heading "Quiz"', async function () {
     await expectTextToBe(this.page.locator('h2'), 'Quiz')
 })
 
-Then('I see the first question', async function () {
-    const firstQuestion = this.bookmarks.Sky
-    await expectTextToBe(this.takeQuestionPage.questionLocator(), firstQuestion.question)
+Then('I see the question {string}', async function (question: string) {
+    const questionBookmark = this.bookmarks[question]
+    await expectTextToBe(this.takeQuestionPage.questionLocator(), questionBookmark.question)
 })
 
 Then('I should see the next button', async function () {

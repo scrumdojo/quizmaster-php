@@ -1,5 +1,5 @@
 Feature: Quiz back navigation
 
   Scenario: Back button is not available on quiz first question
-    Given I visit the quiz page
+    Given I visit the quiz "X" page
     Then I should not see the back button
