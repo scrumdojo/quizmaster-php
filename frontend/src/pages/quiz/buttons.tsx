@@ -6,6 +6,12 @@ export const NextButton = ({ onClick }: WithOnClick) => (
     </Button>
 )
 
+export const BackButton = ({ onClick }: WithOnClick) => (
+    <Button id="back" onClick={onClick}>
+        Previous Question
+    </Button>
+)
+
 export const EvaluateButton = ({ onClick }: WithOnClick) => (
     <Button id="evaluate" className="submit-btn-evaluate" onClick={onClick}>
         Evaluate

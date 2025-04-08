@@ -26,6 +26,11 @@ Then('I should not see the next button', async function () {
 When('I click the next button', async function () {
     await this.quizPage.next()
 })
+
+When('I click the next question', async function () {
+    await this.quizPage.next()
+})
+
 Then('I should see the next question', async function () {
     const secondQuestion = this.bookmarks.France
     await expectTextToBe(this.takeQuestionPage.questionLocator(), secondQuestion.question)
@@ -73,4 +78,16 @@ Then(
 
 Then('I should not see the back button', async function () {
     await expect(this.quizPage.backButtonLocator()).not.toBeVisible()
+})
+
+Then('I should see the back button', async function () {
+    await expect(this.quizPage.backButtonLocator()).toBeVisible()
+})
+
+When('I click the back button', async function () {
+    await this.quizPage.back()
+})
+
+Then('I should see the {string} question', async function (question: string) {
+    await expectTextToBe(this.takeQuestionPage.questionLocator(), question)
 })
