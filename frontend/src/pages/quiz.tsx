@@ -67,8 +67,16 @@ const quizQuestion2: QuizQuestion = {
     questionExplanation: '',
     correctAnswers: [2],
 }
+const quizQuestion3: QuizQuestion = {
+    id: 3,
+    question: 'What are cities in France?',
+    answers: ['London', 'Lyon', 'Paris', 'Toulouse'],
+    explanations: [],
+    questionExplanation: '',
+    correctAnswers: [1, 2, 3],
+}
 
-const quizX = [quizQuestion1, quizQuestion2]
+const quizX = [quizQuestion1, quizQuestion2, quizQuestion3]
 const quizY = [quizQuestion2, quizQuestion1]
 
 const quizzes: Record<string, QuizQuestion[]> = {

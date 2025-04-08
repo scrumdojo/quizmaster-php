@@ -15,7 +15,14 @@ Feature: Take a quiz
       | Paris     | * |
       | Toulouse  |   |
     * saved and bookmarked as "France"
-    # Given a quiz containing questions "Sky" and "France"
+    Given a question "What are cities in France?"
+    * with answers:
+      | London    |   |
+      | Lyon      | * |
+      | Paris     | * |
+      | Toulouse  | * |
+    * saved and bookmarked as "France cities"
+    # Given a quiz containing questions "Sky", "France" and "France cities"
 
   Scenario: Quiz page is available
     Given I visit the quiz "X" page
@@ -47,6 +54,9 @@ Feature: Take a quiz
     Then I should see the next question
     Then I should not see the evaluate button
     When I answer "Lyon"
+    And I click the next button
+    When I check answer "Lyon,Paris,Toulouse"
+    And I submit question
     Then I should see the evaluate button
     Then I should not see the next button
 
@@ -57,6 +67,10 @@ Feature: Take a quiz
     Then I should see the next question
     Then I should not see the evaluate button
     When I answer "Lyon"
+    And I click the next button
+    When I check answer "Lyon,Paris,Toulouse"
+    And I submit question
+    Then I should see the evaluate button
     Then I click the evaluate button
 
   Scenario: User reloads page on answered question
@@ -70,11 +84,12 @@ Feature: Take a quiz
 
   Scenario: Progress bar is shown on first quiz page
     Given I visit the quiz "X" page
-    Then I should see the progress bar showing page 1 of 2
+    Then I should see the progress bar showing page 1 of 3
 
   Scenario: Progress bar is full on last quiz page
     Given I visit the quiz "X" page
     When I answer "Green"
     And I click the next button
-    Then I should see the progress bar showing page 2 of 2
-
+    When I answer "Lyon"
+    And I click the next button
+    Then I should see the progress bar showing page 3 of 3

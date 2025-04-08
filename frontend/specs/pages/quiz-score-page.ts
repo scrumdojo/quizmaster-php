@@ -10,7 +10,7 @@ export class QuizScorePage {
     totalQuestions = () => this.totalQuestionsLocator().textContent().then(Number)
 
     private percentageResultLocator = () => this.page.locator('#percentage-result')
-    percentageResult = () => this.percentageResultLocator().textContent().then(Number)
+    percentageResult = () => this.percentageResultLocator().textContent()
 
     private textResultLocator = () => this.page.locator('#text-result')
     textResult = () => this.textResultLocator().textContent()
