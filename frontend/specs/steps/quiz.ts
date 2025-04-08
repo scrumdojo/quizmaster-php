@@ -6,6 +6,19 @@ Given('I visit the quiz {string} page', async function (quiz: string) {
     await this.page.goto(`/quiz/${quiz}`)
 })
 
+Given('quiz is created as EndFeedBackQuiz', async function () {
+    // TODO Check EndFeedback Quiz checkbox
+    await Promise<null>
+})
+
+Given('I visit the quiz page', async function () {
+    await this.page.goto('/quiz')
+})
+
+Given('I visit the end feedback quiz page', async function () {
+    await this.page.goto('/quiz?endfeedback=1')
+})
+
 Then('I should see heading "Quiz"', async function () {
     await expectTextToBe(this.page.locator('h2'), 'Quiz')
 })

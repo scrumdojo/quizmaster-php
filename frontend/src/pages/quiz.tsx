@@ -3,12 +3,14 @@ import { QuestionForm } from './question-take'
 import { useState } from 'react'
 import { QuizScore } from './quiz-score'
 import { ProgressBar } from './quiz/progress-bar'
-import { useParams } from 'react-router-dom'
-import { BackButton, EvaluateButton, NextButton } from './quiz/buttons'
+import { EvaluateButton, NextButton, BackButton } from './quiz/buttons'
+import { useParams, useLocation } from 'react-router-dom'
 
 interface QuizQuestionProps {
     readonly onEvaluate: (quizScore: QuizScore) => void
     readonly quiz: QuizQuestion[]
+    readonly isEndFeedbackQuiz: boolean
+
 }
 
 type QuizState = readonly AnswerIdxs[]
@@ -90,13 +92,13 @@ const quizzes: Record<string, QuizQuestion[]> = {
 export const Quiz = () => {
     const [quizScore, setQuizScore] = useState<QuizScore | null>(null)
     const isEvaluated = quizScore !== null
-
     const params = useParams()
+    const queryParams = new URLSearchParams(useLocation().search)
+    const isEndFeedback = Boolean(queryParams.get('endfeedback') === "1")
     const quizId = params.id ? params.id.toUpperCase() : 'X'
-
     return isEvaluated ? (
         <QuizScore score={quizScore} answers={quizScore?.answers} />
     ) : (
-        <QuizQuestionForm onEvaluate={setQuizScore} quiz={quizzes[quizId]} />
+        <QuizQuestionForm onEvaluate={setQuizScore} quiz={quizzes[quizId]} isEndFeedbackQuiz={isEndFeedback} />
     )
 }

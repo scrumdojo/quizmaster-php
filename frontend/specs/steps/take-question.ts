@@ -1,7 +1,7 @@
 import type { DataTable } from '@cucumber/cucumber'
 import { expect } from '@playwright/test'
 
-import { expectTextToBe, expectTextToContain } from './common.ts'
+import { expectTextToBe, expectTextToContain, expectThatIsNotVisible } from './common.ts'
 import { Then, When } from './fixture.ts'
 
 When('I take question {string}', async function (bookmark: string) {
@@ -52,6 +52,10 @@ Then('I see feedback {string}', async function (feedback: string) {
     await expectTextToBe(this.takeQuestionPage.feedbackLocator(), `The answer is:\u00A0${feedback}`)
 })
 
+Then('I do not see any feedback', async function () {
+    await expectThatIsNotVisible(this.takeQuestionPage.feedbackLocator())
+})
+
 Then('no answer is selected', async function () {
     await expect(await this.takeQuestionPage.selectedAnswersLocator().count()).toBe(0)
 })
@@ -60,8 +64,16 @@ Then('I see the answer explanation {string}', async function (answerExplanation:
     await expectTextToBe(this.takeQuestionPage.answerExplanationLocator(), answerExplanation)
 })
 
+Then('I do not see the answer explanation', async function () {
+    await expectThatIsNotVisible(this.takeQuestionPage.answerExplanationLocator())
+})
+
 Then('I see the question explanation', async function () {
     await expectTextToBe(this.takeQuestionPage.questionExplanationLocator(), this.activeQuestion.explanation)
+})
+
+Then('I do not see the question explanation', async function () {
+    await expectThatIsNotVisible(this.takeQuestionPage.questionExplanationLocator())
 })
 
 Then(/^I see the answer explanations for answers$/, async function (data: DataTable) {
@@ -92,4 +104,8 @@ Then('I see individual feedback:', async function (dataTable: DataTable) {
 
 Then('no explanation answer is displayed', async function () {
     await expect(await this.takeQuestionPage.answerExplanationLocator().count()).toBe(0)
+})
+
+Then('explanation answer is displayed', async function () {
+    await expect(await this.takeQuestionPage.answerExplanationLocator().count()).toBeGreaterThan(0)
 })
