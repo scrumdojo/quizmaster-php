@@ -21,9 +21,13 @@ Feature: Take a quiz
     Given I visit the quiz "X" page
     Then I should see heading "Quiz"
 
-  Scenario: Quiz question is displayed
-    Given I visit the quiz "X" page
-    Then I see the question "Sky"
+  Scenario Outline: Quiz question is displayed
+    Given I visit the quiz "<quiz>" page
+    Then I see the question "<question>"
+    Examples:
+      | quiz | question   |
+      | X    | Sky        |
+      | Y    | France     |
 
   Scenario: Quiz question is answered
     Given I visit the quiz "X" page

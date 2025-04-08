@@ -9,7 +9,7 @@ export const App = () => (
     <BrowserRouter>
         <Routes>
             <Route path="/question/new" element={<CreateQuestionContainer />} />
-            <Route path="/quiz/*" element={<Quiz />} />
+            <Route path="/quiz/:id" element={<Quiz />} />
             <Route path="/question/:id/edit" element={<EditQuestionContainer />} />
             <Route path="/question/:id" element={<QuestionTakePage />} />
             <Route path="/" element={<HomePage />} />
