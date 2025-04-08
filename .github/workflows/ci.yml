@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - php
+      - main
   workflow_dispatch:
 
 jobs:
