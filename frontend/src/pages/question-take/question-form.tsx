@@ -31,10 +31,7 @@ export const QuestionForm = (props: QuestionFormProps) => {
     return (
         <form onSubmit={handleSubmit} id="question-form">
             <h1>{props.question.question}</h1>
-            <Group
-                name="answer"
-                data-test-id="question-form"
-            >
+            <Group name="answer" data-test-id="question-form">
                 <ul>
                     {props.question.answers.map((answer, idx) => (
                         <Answer
