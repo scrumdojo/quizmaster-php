@@ -44,6 +44,10 @@ export const QuizQuestionForm = (props: QuizQuestionProps) => {
 
     const handlePreviousClick = () => setCurrentQuestionIdx(prev => prev - 1)
 
+    if (props.quiz.length === 0) {
+        return <div>Loading...</div>
+    }
+
     return (
         <div>
             <h2>Quiz</h2>
