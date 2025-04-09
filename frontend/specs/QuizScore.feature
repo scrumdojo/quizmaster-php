@@ -49,6 +49,6 @@ Scenario: Quiz score one question is inccorect
   * I click the evaluate button
   Then I see the result 1 correct out of 3, 33%, failed
   Then I see "failed" icon
-  Then I see question 1 "Incorrect" "What is the standard colour of sky?" with feedback "Correct!,Inorrect!,Incorrect!,Correct!"
+  Then I see question 1 "Incorrect" "What is the standard colour of sky?" with feedback "Correct!,Incorrect!,Incorrect!,Correct!"
   Then I see question 2 "Correct" "What is capital of France?" with feedback "Correct!,Correct!,Correct!,Correct!"
   Then I see question 3 "Incorrect" "What are cities in France?" with feedback "Incorrect!,Incorrect!,Correct!,Correct!"

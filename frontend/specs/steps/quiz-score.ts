@@ -42,9 +42,13 @@ Then(
         expect(feedbackText).toBe(totalFeedback)
 
         const answerFeedback = await this.quizScorePage.answersFeedbackLocator(id)
-        answersFeedbackArg.split(',').forEach(async (feedback, index) => {
-            const answerFeedbackLi = await answerFeedback.nth(index)
-            expect(await answerFeedbackLi.getAttribute('class')).toBe(feedback === 'Correct!' ? 'success' : 'error')
-        })
+        const feedbacks = answersFeedbackArg.split(',')
+
+        await Promise.all(
+            feedbacks.map(async (feedback, index) => {
+                const answerFeedbackLi = await answerFeedback.nth(index)
+                expect(await answerFeedbackLi.getAttribute('class')).toBe(feedback === 'Correct!' ? 'success' : 'error')
+            }),
+        )
     },
 )
