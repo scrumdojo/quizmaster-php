@@ -25,7 +25,11 @@ export const QuizQuestionForm = (props: QuizQuestionProps) => {
         newQuizState[currentQuestionIdx] = selectedAnswerIdxs
         setQuizState(newQuizState)
         if (props.isEndFeedbackQuiz) {
-            onNext()
+            if (isLastQuestion) {
+                onEvaluate()
+            } else {
+                onNext()
+            }
         }
     }
 
@@ -46,7 +50,7 @@ export const QuizQuestionForm = (props: QuizQuestionProps) => {
 
     const bottomButtons = () => {
         if (props.isEndFeedbackQuiz) {
-            return isLastQuestion ? <EvaluateButton onClick={onEvaluate} /> : null
+            return null
         }
         if (isAnswered) {
             return !isLastQuestion ? <NextButton onClick={onNext} /> : <EvaluateButton onClick={onEvaluate} />
@@ -66,6 +70,7 @@ export const QuizQuestionForm = (props: QuizQuestionProps) => {
                 onSubmitted={onSubmitted}
                 isEndFeedbackQuiz={props.isEndFeedbackQuiz}
                 answers={quizState[currentQuestionIdx]}
+                isLastQuestion={isLastQuestion}
             />
             {currentQuestionIdx > 0 && <BackButton onClick={handlePreviousClick} />}
             {bottomButtons()}

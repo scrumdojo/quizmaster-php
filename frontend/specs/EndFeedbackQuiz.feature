@@ -41,3 +41,10 @@ Feature: Take an end feedback quiz
     When I answer "Green"
     Then I click the back button
     Then I can change the answer
+
+  Scenario: Going to the end of End Feedback Quiz shows evaluate button
+    Given I visit the end feedback quiz page
+    When I answer "Green"
+    When I answer "Lyon"
+    Then I should see the evaluate button
+    Then I should not see the next button

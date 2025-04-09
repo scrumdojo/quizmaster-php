@@ -5,9 +5,17 @@ export const NextButton = ({ onClick }: WithOnClick) => (
         Next Question
     </Button>
 )
-export const SubmitAndNextButton = () => (
-    <Button id="next" type="submit" className="submit-and-next-btn" onClick={() => {}}>
-        Next Question
+interface SubmitAndNextButtonProps {
+    isLastQuestion?: boolean
+}
+export const SubmitAndNextButton = ({ isLastQuestion }: SubmitAndNextButtonProps) => (
+    <Button
+        id="next"
+        type="submit"
+        className={isLastQuestion ? 'submit-btn-evaluate' : 'submit-and-next-btn'}
+        onClick={() => {}}
+    >
+        {isLastQuestion ? 'Evaluate' : 'Next Question'}
     </Button>
 )
 

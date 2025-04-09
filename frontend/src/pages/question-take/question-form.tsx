@@ -15,6 +15,7 @@ export interface QuestionFormProps {
     readonly onSubmitted?: (selectedAnswerIdxs: AnswerIdxs) => void
     readonly isEndFeedbackQuiz?: boolean
     readonly answers?: AnswerIdxs
+    readonly isLastQuestion?: boolean
 }
 
 export const QuestionForm = (props: QuestionFormProps) => {
@@ -56,7 +57,7 @@ export const QuestionForm = (props: QuestionFormProps) => {
                 </ul>
             </Group>
             {props.isEndFeedbackQuiz ? (
-                <SubmitAndNextButton />
+                <SubmitAndNextButton isLastQuestion={props.isLastQuestion} />
             ) : !isSubmitted ? (
                 <input type="submit" value="Submit" className="submit-btn" id="submit-button" />
             ) : null}
