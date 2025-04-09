@@ -35,4 +35,8 @@ export class TakeQuestionPage {
     questionExplanationLocator = () => this.page.locator('p.question-explanation')
 
     selectedAnswersLocator = () => this.page.locator('input:checked')
+
+    answerInputsLocator = () => this.page.locator('input[type="checkbox"],input[type="radio"]')
+
+    submitLocator = () => this.page.locator('input[type="submit"]')
 }

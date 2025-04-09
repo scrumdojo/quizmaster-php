@@ -108,3 +108,20 @@ When('I click the back button', async function () {
 Then('I should see the {string} question', async function (question: string) {
     await expectTextToBe(this.takeQuestionPage.questionLocator(), question)
 })
+
+Then('I should see the answer {string} selected', async function (answer: string) {
+    const inputValue = await this.takeQuestionPage.selectedAnswersLocator().first().inputValue()
+    await expect(inputValue).toBe(answer)
+})
+
+Then('I should see the answered question explanation', async function () {
+    await expect(this.takeQuestionPage.answerExplanationLocator().first()).toBeAttached()
+})
+
+Then('I cannot change the answer', async function () {
+    const answers = await this.takeQuestionPage.answerInputsLocator().all()
+    for (const answer of answers) {
+        await expect(answer).toBeDisabled()
+    }
+    await expect(this.takeQuestionPage.submitLocator()).not.toBeVisible()
+})

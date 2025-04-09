@@ -12,6 +12,8 @@ export type AnswerProps = {
     readonly showFeedback: boolean
     readonly onAnswerChange: (idx: number, selected: boolean) => void
     checked?: boolean
+    readonly selected?: boolean
+    readonly disabled?: boolean
 }
 
 export const Answer = (props: AnswerProps) => {
@@ -32,6 +34,7 @@ export const Answer = (props: AnswerProps) => {
             <AnswerInput
                 value={props.answer}
                 checked={props.checked}
+                disabled={props.disabled}
                 id={answerId}
                 onChange={onChange}
                 name={checkName}

@@ -14,7 +14,7 @@ export const useQuestionTakeState = (props: QuestionFormProps): QuestionTakeStat
     const question = props.question
     const isMultipleChoice = question.correctAnswers.length > 1
 
-    const [selectedAnswerIdxs, setSelectedAnswerIdxs] = useState<AnswerIdxs>([])
+    const [selectedAnswerIdxs, setSelectedAnswerIdxs] = useState<AnswerIdxs>(props.answers ?? [])
 
     const setSelectedAnswerIdx = (idx: number) => setSelectedAnswerIdxs([idx])
     const addSelectedAnswerIdx = (idx: number) => setSelectedAnswerIdxs(prev => [...prev, idx])

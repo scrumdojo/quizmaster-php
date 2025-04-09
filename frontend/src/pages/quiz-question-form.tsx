@@ -57,6 +57,7 @@ export const QuizQuestionForm = (props: QuizQuestionProps) => {
                 question={currentQuestion}
                 onSubmitted={onSubmitted}
                 isEndFeedbackQuiz={props.isEndFeedbackQuiz}
+                answers={quizState[currentQuestionIdx]}
             />
             {currentQuestionIdx > 0 && <BackButton onClick={handlePreviousClick} />}
             {isAnswered &&
