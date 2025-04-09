@@ -24,36 +24,6 @@
             padding: 10px 20px;
             font-size: 1em;
         }
-
-        input[type="checkbox"].answer-isCorrect-checkbox-multi , input[type="checkbox"].answer-isCorrect-checkbox {
-                appearance: none;
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                width: 20px;
-                height: 20px;
-                border: 2px solid #000;
-                border-radius: 50%;
-                position: relative;
-                cursor: pointer;
-              &:checked::before {
-                content: '';
-                width: 12px;
-                height: 12px;
-                background-color: #000;
-                border-radius: 50%;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-              }
-            }
-
-            input[type="checkbox"].answer-isCorrect-checkbox-multi {
-                border-radius: 0;
-                &:checked::before {
-                    border-radius: 0;
-                }
-            }
     }
 
     #question-link, #question-edit-link {

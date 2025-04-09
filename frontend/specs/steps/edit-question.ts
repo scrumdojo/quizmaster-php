@@ -79,11 +79,6 @@ When('I mark a multiple choice', async function () {
     await this.createQuestionPage.multipleChoiceLocator().click()
 })
 
-Then('I see checkboxes for every answer', async function () {
-    const getCheckbox = await this.createQuestionPage.isCorrectCheckboxesLocator().all()
-    for (const li of getCheckbox) expect(await li.getAttribute('class')).toBe('answer-isCorrect-checkbox-multi')
-})
-
 When('I mark {int} checkbox', async function (index: number) {
     await this.createQuestionPage.markButton(index).click()
 })

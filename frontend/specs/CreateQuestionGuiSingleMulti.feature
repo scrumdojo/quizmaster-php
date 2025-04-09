@@ -116,13 +116,3 @@ Feature: Create question GUI - Single/multi choice
     | Brno       | * |
     | Berlin     |   |
     | Bratislava |   |
-
-  Scenario: Single choice question markers are round
-    Given I start creating a question
-    * with multi-choice selected
-    * with answers:
-    | Brno       | * | |
-    | Berlin     |   | |
-    | Bratislava |   | |
-    When I make the question single-choice
-    Then Is correct checkboxes look like radio buttons

@@ -1,4 +1,5 @@
 import { type AnswerData, emptyAnswerData } from './question-form-data.ts'
+import { Radio, Checkbox } from '@mui/material'
 
 interface AnswerRowProps {
     readonly answer: AnswerData
@@ -7,31 +8,35 @@ interface AnswerRowProps {
     readonly updateAnswerData: (index: number, newValue: Partial<AnswerData>) => void
 }
 
-export const AnswerRow = ({ answer, index, isMultichoiceQuestion, updateAnswerData }: AnswerRowProps) => (
-    <div key={`answer-${index}`} className="answer-row">
-        <input
-            id={`answer-text-${index}`}
-            type="text"
-            placeholder={`Answer ${index + 1}`}
-            value={answer.answer}
-            onChange={e => updateAnswerData(index, { answer: e.target.value })}
-        />
-        <input
-            id={`answer-checkbox-${index}`}
-            className={!isMultichoiceQuestion ? 'answer-isCorrect-checkbox' : 'answer-isCorrect-checkbox-multi'}
-            type="checkbox"
-            checked={answer.isCorrect}
-            onChange={e => updateAnswerData(index, { isCorrect: e.target.checked })}
-        />
-        <input
-            id={`answer-explanation-${index}`}
-            type="text"
-            placeholder="Explanation for wrong answer"
-            value={answer.explanation}
-            onChange={e => updateAnswerData(index, { explanation: e.target.value })}
-        />
-    </div>
-)
+export const AnswerRow = ({ answer, index, isMultichoiceQuestion, updateAnswerData }: AnswerRowProps) => {
+    const CorrectInput = isMultichoiceQuestion ? Checkbox : Radio
+
+    return (
+        <div key={`answer-${index}`} className="answer-row">
+            <input
+                id={`answer-text-${index}`}
+                type="text"
+                placeholder={`Answer ${index + 1}`}
+                value={answer.answer}
+                onChange={e => updateAnswerData(index, { answer: e.target.value })}
+            />
+
+            <CorrectInput
+                id={`answer-checkbox-${index}`}
+                checked={answer.isCorrect}
+                value={answer.answer}
+                onChange={e => updateAnswerData(index, { isCorrect: e.target.checked })}
+            />
+            <input
+                id={`answer-explanation-${index}`}
+                type="text"
+                placeholder="Explanation for wrong answer"
+                value={answer.explanation}
+                onChange={e => updateAnswerData(index, { explanation: e.target.value })}
+            />
+        </div>
+    )
+}
 
 interface AddAnswerProps {
     readonly addAnswer: () => void

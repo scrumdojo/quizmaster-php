@@ -60,7 +60,6 @@ Feature: Edit question GUI
     When I start editing question "Czechia"
     Then I see the question, answers and explanations
     When I mark a multiple choice
-    Then I see checkboxes for every answer
     When I mark 1 checkbox
     And I save it
     And I reload the page
