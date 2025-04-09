@@ -16,6 +16,11 @@ body {
     }
 }
 
+.result {
+    position: relative;
+    padding: 8.56px 30px 8.56px;
+}
+
 .result.is-passed {
     background-color: #d4edda;
     color: #155724;
@@ -35,13 +40,17 @@ body {
 }
 
 .result-icon {
-    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 48px;
+    bottom: 0;
+    display: block;
     width: 48px;
     height: 48px;
     border-radius: 50%;
     overflow: hidden;
     color: #ffffff;
-    margin: 24px;
+    margin: auto;
 
     svg {
         width: 100%;

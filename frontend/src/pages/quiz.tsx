@@ -24,7 +24,7 @@ export const Quiz = () => {
     }, [quizId])
 
     return isEvaluated ? (
-        <QuizScore score={quizScore} answers={quizScore?.answers} />
+        <QuizScore score={quizScore} quizQuestionAnswered={quizScore?.answers} />
     ) : (
         <QuizQuestionForm onEvaluate={setQuizScore} quiz={quiz} isEndFeedbackQuiz={isEndFeedback} />
     )

@@ -26,6 +26,12 @@ Then(
         expect(textResult).toBe(expectedTextResult)
     },
 )
+
+Then('I see {string} icon', async function (icon: string) {
+    const iconLocator = this.page.locator(`.result.is-${icon} .result-icon`)
+    expect(await iconLocator.count()).toBe(1)
+})
+
 Then(
     'I see question {int} {string} {string} with feedback {string}',
     async function (id: number, totalFeedback: string, question: string, answersFeedbackArg: string) {

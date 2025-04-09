@@ -15,14 +15,11 @@ export class QuizScorePage {
     private textResultLocator = () => this.page.locator('#text-result')
     textResult = () => this.textResultLocator().textContent()
 
-    private questionLocator = (id: number) => this.page.locator(`#answers-${id} > .question`)
+    private questionLocator = (id: number) => this.page.locator(`#answers-${id} .question`)
     question = (id: number) => this.questionLocator(id).textContent()
 
-    private answerLocator = (id: number) => this.page.locator(`#answers-${id} > .answer`)
-    answer = (id: number) => this.answerLocator(id).textContent()
+    private totalFeedbackLocator = (id: number) => this.page.locator(`#answers-${id} .totalFeedback`)
+    totalFeedback = (id: number) => this.totalFeedbackLocator(id).getAttribute('title')
 
-    private totalFeedbackLocator = (id: number) => this.page.locator(`#answers-${id} > .feedback`)
-    totalFeedback = (id: number) => this.totalFeedbackLocator(id).textContent()
-
-    answersFeedbackLocator = (id: number) => this.page.locator(`#answers-${id} > .answer-list > li`)
+    answersFeedbackLocator = (id: number) => this.page.locator(`#answers-${id} .answer-list > li`)
 }
