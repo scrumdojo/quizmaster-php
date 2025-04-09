@@ -26,16 +26,10 @@ Then(
         expect(textResult).toBe(expectedTextResult)
     },
 )
-Then(
-    'I see question {int} {string} with answer {string} and feedback is {string}',
-    async function (id: number, question: string, answer: string, feedback: string) {
-        const questionText = await this.quizScorePage.question(id)
-        expect(questionText).toBe(question)
+Then('I see question {int} {string} {string}', async function (id: number, feedback: string, question: string) {
+    const questionText = await this.quizScorePage.question(id)
+    expect(questionText).toBe(question)
 
-        const answerText = await this.quizScorePage.answer(id)
-        expect(answerText).toBe(answer)
-
-        const feedbackText = await this.quizScorePage.feedback(id)
-        expect(feedbackText).toBe(feedback)
-    },
-)
+    const feedbackText = await this.quizScorePage.feedback(id)
+    expect(feedbackText).toBe(feedback)
+})

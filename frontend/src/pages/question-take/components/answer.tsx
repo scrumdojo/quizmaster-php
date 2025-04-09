@@ -11,6 +11,7 @@ export type AnswerProps = {
     readonly isCorrect: boolean
     readonly showFeedback: boolean
     readonly onAnswerChange: (idx: number, selected: boolean) => void
+    checked?: boolean
 }
 
 export const Answer = (props: AnswerProps) => {
@@ -28,7 +29,13 @@ export const Answer = (props: AnswerProps) => {
 
     return (
         <li data-test-id={`answer-row-${props.answer}`} key={props.idx} className={listItemClassName}>
-            <AnswerInput value={props.answer} id={answerId} onChange={onChange} name={checkName} />
+            <AnswerInput
+                value={props.answer}
+                checked={props.checked}
+                id={answerId}
+                onChange={onChange}
+                name={checkName}
+            />
             <label htmlFor={answerId}>
                 {props.answer}
                 {props.showFeedback && (
