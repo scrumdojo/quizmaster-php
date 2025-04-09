@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test'
-import { expectTextToBe, type TableOf } from './common.ts'
+import { expectTextToBe } from './common.ts'
 import { Given, When, Then } from './fixture.ts'
 
 Given('I visit the quiz {string} page', async function (quiz: string) {

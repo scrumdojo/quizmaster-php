@@ -24,7 +24,7 @@ Given('a quiz {string} containing questions', async function (quiz: string, ques
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({}),
+        body: JSON.stringify(questions.raw()),
     })
     await saveQuiz(this, quiz, quizResponse)
 })
