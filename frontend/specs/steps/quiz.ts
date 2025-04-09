@@ -127,3 +127,11 @@ Then('I cannot change the answer', async function () {
     }
     await expect(this.takeQuestionPage.submitLocator()).not.toBeVisible()
 })
+
+Then('I can change the answer', async function () {
+    const answers = await this.takeQuestionPage.answerInputsLocator().all()
+    for (const answer of answers) {
+        await expect(answer).not.toBeDisabled()
+    }
+    await expect(this.takeQuestionPage.submitableButton()).toBeVisible()
+})

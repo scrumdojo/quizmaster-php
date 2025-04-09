@@ -47,22 +47,23 @@ export const QuestionForm = (props: QuestionFormProps) => {
                             answer={answer}
                             isCorrect={feedback.isAnswerCorrect(idx)}
                             explanation={props.question.explanations ? props.question.explanations[idx] : 'not defined'}
-                            showFeedback={isSubmitted && feedback.showFeedback(idx)}
+                            showFeedback={isSubmitted && feedback.showFeedback(idx) && !props.isEndFeedbackQuiz}
                             onAnswerChange={state.onSelectedAnswerChange}
                             selected={props.answers?.includes(idx)}
-                            disabled={isSubmitted}
+                            disabled={isSubmitted && !props.isEndFeedbackQuiz}
                         />
                     ))}
                 </ul>
             </Group>
-            {!isSubmitted &&
-                (props.isEndFeedbackQuiz ? (
-                    <SubmitAndNextButton />
-                ) : (
-                    <input type="submit" value="Submit" className="submit-btn" id="submit-button" />
-                ))}
-            {isSubmitted && <QuestionCorrectness isCorrect={feedback.isQuestionCorrect} />}
-            {isSubmitted && <QuestionExplanation text={props.question.questionExplanation} />}
+            {props.isEndFeedbackQuiz ? (
+                <SubmitAndNextButton />
+            ) : !isSubmitted ? (
+                <input type="submit" value="Submit" className="submit-btn" id="submit-button" />
+            ) : null}
+            {isSubmitted && !props.isEndFeedbackQuiz && <QuestionCorrectness isCorrect={feedback.isQuestionCorrect} />}
+            {isSubmitted && !props.isEndFeedbackQuiz && (
+                <QuestionExplanation text={props.question.questionExplanation} />
+            )}
         </form>
     )
 }

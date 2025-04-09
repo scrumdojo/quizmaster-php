@@ -29,3 +29,15 @@ Feature: Take an end feedback quiz
     When I answer "Green"
     Then I should see the next question
 
+  Scenario: Going back in End Feedback Quiz does not show results
+    Given I visit the end feedback quiz page
+    When I answer "Green"
+    Then I click the back button
+    Then I do not see any feedback
+    Then I do not see the answer explanation
+
+  Scenario: Going back in End Feedback Quiz allows change of answered questions
+    Given I visit the end feedback quiz page
+    When I answer "Green"
+    Then I click the back button
+    Then I can change the answer
