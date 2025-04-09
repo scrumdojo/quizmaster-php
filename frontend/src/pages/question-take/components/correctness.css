@@ -2,31 +2,13 @@
     color: green;
 }
 
-.answer-list .correct,
-.answer-list .incorrect {
-    color: black;
+.answer-list .success svg {
+    color: #4C9A2A;
 }
 
-.answer-list input[type=checkbox] {
-    border-width: 3px;
-}
 
-.answer-list .correct input[type=checkbox] {
-    border-color: #4C9A2A;
-}
-
-.answer-list .correct input[type=checkbox]:checked {
-    background-color: #4C9A2A;
-    color: white;
-}
-
-.answer-list .incorrect input[type=checkbox] {
-    border-color: red;
-}
-
-.answer-list .incorrect input[type=checkbox]:checked {
-    background-color: red;
-    color: white;
+.answer-list .error svg {
+    color: red;
 }
 
 .incorrect {

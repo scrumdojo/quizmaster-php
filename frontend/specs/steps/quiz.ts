@@ -6,7 +6,7 @@ Given('I visit the quiz {string} page', async function (quiz: string) {
     await this.page.goto(`/quiz/${quiz}`)
 })
 
-Given('quiz is created as EndFeedBackQuiz', async function () {
+Given('quiz is created as EndFeedBackQuiz', async () => {
     // TODO Check EndFeedback Quiz checkbox
     await Promise<null>
 })

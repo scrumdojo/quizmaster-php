@@ -17,9 +17,9 @@ export const Answer = (props: AnswerProps) => {
     const answerId = `answer-row-${props.idx}`
     const AnswerInput = props.isMultipleChoice ? Checkbox : Radio
     const checkName = props.isMultipleChoice ? answerId : 'answer'
-    var listItemClassName = 'listItemClassName'
+    let listItemClassName = 'listItemClassName'
     if (props.showFeedback) {
-        listItemClassName = props.isCorrect ? 'correct' : 'incorrect'
+        listItemClassName = props.isCorrect ? 'success' : 'error'
     }
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {

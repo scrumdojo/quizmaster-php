@@ -10,7 +10,6 @@ interface QuizQuestionProps {
     readonly onEvaluate: (quizScore: QuizScore) => void
     readonly quiz: QuizQuestion[]
     readonly isEndFeedbackQuiz: boolean
-
 }
 
 type QuizState = readonly AnswerIdxs[]
@@ -94,7 +93,7 @@ export const Quiz = () => {
     const isEvaluated = quizScore !== null
     const params = useParams()
     const queryParams = new URLSearchParams(useLocation().search)
-    const isEndFeedback = Boolean(queryParams.get('endfeedback') === "1")
+    const isEndFeedback = Boolean(queryParams.get('endfeedback') === '1')
     const quizId = params.id ? params.id.toUpperCase() : 'X'
     return isEvaluated ? (
         <QuizScore score={quizScore} answers={quizScore?.answers} />

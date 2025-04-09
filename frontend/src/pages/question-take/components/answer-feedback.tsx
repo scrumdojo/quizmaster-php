@@ -9,9 +9,7 @@ interface AnswerFeedbackProps {
 export const AnswerFeedback = (props: AnswerFeedbackProps) => (
     <span>
         &nbsp;
-        {props.isMultipleChoice ? '' : (
-            <Correctness isCorrect={props.correct} />
-        )}
+        {props.isMultipleChoice ? '' : <Correctness isCorrect={props.correct} />}
         &nbsp;
         <span className="explanation">{<Explanation text={props.explanation} />}</span>
     </span>
