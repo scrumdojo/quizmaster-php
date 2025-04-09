@@ -8,6 +8,15 @@ use App\Model\QuizQuestionApiModel;
 
 class QuizQuestionMapper
 {
+    public function mapEntitiesToApiModels(array $questions): array
+    {
+        $models = [];
+        foreach ($questions as $question) {
+            $models[] = $this->mapEntityToApiModel($question);
+        }
+        return $models;
+    }
+
     // Maps Entity -> API Model
     public function mapEntityToApiModel(QuizQuestion $question): QuizQuestionApiModel
     {
