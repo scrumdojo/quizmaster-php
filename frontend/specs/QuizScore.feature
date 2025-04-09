@@ -22,6 +22,10 @@ Feature: Evaluate quiz score
       | Paris     | * |
       | Toulouse  | * |
     * saved and bookmarked as "France cities"
+    Given a quiz "X" containing questions
+      | Sky           |
+      | France        |
+      | France cities |
 
 Scenario: Quiz score all question are correct
   Given I visit the quiz "X" page

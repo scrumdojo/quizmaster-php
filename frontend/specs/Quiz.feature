@@ -1,12 +1,12 @@
 Feature: Take a quiz
 
-   Background:
+  Background:
     Given a question "What is the standard colour of sky?"
     * with answers:
-      | Red       |   |
-      | Blue      | * |
-      | Green     |   |
-      | Black     |   |
+      | Red   |   |
+      | Blue  | * |
+      | Green |   |
+      | Black |   |
     * saved and bookmarked as "Sky"
     Given a question "What is capital of France?"
     * with answers:
@@ -17,24 +17,30 @@ Feature: Take a quiz
     * saved and bookmarked as "France"
     Given a question "What are cities in France?"
     * with answers:
-      | London    |   |
-      | Lyon      | * |
-      | Paris     | * |
-      | Toulouse  | * |
+      | London   |   |
+      | Lyon     | * |
+      | Paris    | * |
+      | Toulouse | * |
     * saved and bookmarked as "France cities"
-    # Given a quiz containing questions "Sky", "France" and "France cities"
+    Given a quiz "X" containing questions
+      | Sky           |
+      | France        |
+      | France cities |
 
   Scenario: Quiz page is available
     Given I visit the quiz "X" page
     Then I should see heading "Quiz"
 
   Scenario Outline: Quiz question is displayed
+    Given a quiz "Y" containing questions
+      | France        |
+      | Sky           |
     Given I visit the quiz "<quiz>" page
     Then I see the question "<question>"
     Examples:
-      | quiz | question   |
-      | X    | Sky        |
-      | Y    | France     |
+      | quiz | question |
+      | X    | Sky      |
+      | Y    | France   |
 
   Scenario: Quiz question is answered
     Given I visit the quiz "X" page

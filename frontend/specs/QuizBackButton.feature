@@ -1,5 +1,11 @@
 Feature: Quiz back navigation
 
+  Background:
+    Given a quiz "X" containing questions
+      | Sky           |
+      | France        |
+      | France cities |
+
   Scenario: Back button is not available on quiz first question
     Given I visit the quiz "X" page
     Then I should not see the back button

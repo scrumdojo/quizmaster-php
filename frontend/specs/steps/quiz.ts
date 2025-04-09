@@ -1,9 +1,11 @@
 import { expect } from '@playwright/test'
-import { expectTextToBe } from './common.ts'
+import { expectTextToBe, type TableOf } from './common.ts'
 import { Given, When, Then } from './fixture.ts'
 
 Given('I visit the quiz {string} page', async function (quiz: string) {
-    await this.page.goto(`/quiz/${quiz}`)
+    const currentQuiz = this.quizBookmarks[quiz]
+
+    await this.page.goto(`/quiz/${currentQuiz.id}`)
 })
 
 Given('quiz is created as EndFeedBackQuiz', async () => {

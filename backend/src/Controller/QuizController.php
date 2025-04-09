@@ -72,6 +72,15 @@ class QuizController extends AbstractController
         return $this->response($questions[$id] ?? $questions['X']);
     }
 
+    #[Route('/quiz', methods: ['POST'])]
+    public function createQuiz(Request $request): Response {
+        $quizId = $request->query->get('id');
+
+        return $this->json([
+            'id' => $quizId,
+        ]);
+    }
+
     /**
      * @param QuizQuestion[] $questions
      */

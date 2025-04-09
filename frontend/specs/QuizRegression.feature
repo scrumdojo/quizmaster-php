@@ -15,7 +15,10 @@ Feature: Take a quiz
       | Paris     | * |
       | Toulouse  |   |
     * saved and bookmarked as "France"
-    # Given a quiz containing questions "Sky" and "France"
+    Given a quiz "X" containing questions
+      | Sky           |
+      | France        |
+      | France cities |
 
   Scenario: Quiz question is displayed and not answered
     Given I visit the quiz "X" page
