@@ -2,13 +2,19 @@
     color: green;
 }
 
+.answer-list li svg {
+    padding: 3px;
+}
+
 .answer-list .success svg {
     color: #4C9A2A;
+    background: #4c9a2a23;
 }
 
 
 .answer-list .error svg {
     color: red;
+    background: #FFD1DC;
 }
 
 .incorrect {
