@@ -10,6 +10,13 @@ Feature: Answering a quiz question with multiple choice
     * with explanation "Italy, France, and Spain are in Europe. Morocco is in Africa."
     * saved and bookmarked as "Europe"
 
+    Given a question "What is right?"
+    * with answers:
+      | Right   | * |  |
+      | Wrong  | * |  |
+    * with explanation "Right is Right, Wrong is Wrong"
+    * saved and bookmarked as "Right"
+
   Scenario Outline: Detailed feedback is displayed for each selected answer
     Answer is considered correct if and only if:
     - All correct answers are selected.
@@ -46,3 +53,11 @@ Feature: Answering a quiz question with multiple choice
       | Spain   | This country is located on the Iberian Peninsula, which is part of the European continent.         |
     And I see the question explanation
 
+  Scenario: No explanations are displayed after answering the question
+    When I take question "Right"
+    And I answer "Right, Wrong"
+    Then I do not see the answer explanation
+      | answer |
+      | Right |
+      | Wrong |
+    And I see the question explanation

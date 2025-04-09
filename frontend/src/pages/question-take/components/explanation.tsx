@@ -1,11 +1,17 @@
+import './explanation.css'
+
 interface ExplanationProps {
     readonly text: string
 }
 
 export const Explanation = (props: ExplanationProps) => (
     <>
-        <br />
-        Explanation: <span className="explanationText">{props.text}</span>
+        {props.text && (
+            <>
+                <br />
+                <span className="explanationText">{props.text}</span>
+            </>
+        )}
     </>
 )
 
