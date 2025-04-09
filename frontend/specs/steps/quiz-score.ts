@@ -26,10 +26,19 @@ Then(
         expect(textResult).toBe(expectedTextResult)
     },
 )
-Then('I see question {int} {string} {string}', async function (id: number, feedback: string, question: string) {
-    const questionText = await this.quizScorePage.question(id)
-    expect(questionText).toBe(question)
+Then(
+    'I see question {int} {string} {string} with feedback {string}',
+    async function (id: number, totalFeedback: string, question: string, answersFeedbackArg: string) {
+        const questionText = await this.quizScorePage.question(id)
+        expect(questionText).toBe(question)
 
-    const feedbackText = await this.quizScorePage.feedback(id)
-    expect(feedbackText).toBe(feedback)
-})
+        const feedbackText = await this.quizScorePage.totalFeedback(id)
+        expect(feedbackText).toBe(totalFeedback)
+
+        const answerFeedback = await this.quizScorePage.answersFeedbackLocator(id)
+        answersFeedbackArg.split(',').forEach(async (feedback, index) => {
+            const answerFeedbackLi = await answerFeedback.nth(index)
+            expect(await answerFeedbackLi.getAttribute('class')).toBe(feedback === 'Correct!' ? 'success' : 'error')
+        })
+    },
+)

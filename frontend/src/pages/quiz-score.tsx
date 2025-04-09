@@ -45,28 +45,30 @@ export const QuizScore = ({ score, answers }: QuizScoreProps) => {
             </p>
 
             <h2>Recap</h2>
-            <ul className="answer-list">
+            <ul>
                 {answers.map(({ id, question, userAnswers, answers, feedback, explanations, correctAnswers }) => (
                     <li key={id} id={`answers-${id}`}>
                         <span className="feedback">{feedback}</span>
                         <span className="question">{question}</span>
 
-                        {answers.map((answer, idx) => (
-                            <Answer
-                                key={answer}
-                                isMultipleChoice={correctAnswers.length > 1}
-                                idx={idx}
-                                answer={answer}
-                                checked={userAnswers.includes(idx)}
-                                isCorrect={
-                                    (correctAnswers.includes(idx) && userAnswers.includes(idx)) ||
-                                    (!correctAnswers.includes(idx) && !userAnswers.includes(idx))
-                                }
-                                explanation={explanations ? explanations[idx] : 'not defined'}
-                                showFeedback={true}
-                                onAnswerChange={() => {}}
-                            />
-                        ))}
+                        <ul className="answer-list">
+                            {answers.map((answer, idx) => (
+                                <Answer
+                                    key={answer}
+                                    isMultipleChoice={correctAnswers.length > 1}
+                                    idx={idx}
+                                    answer={answer}
+                                    checked={userAnswers.includes(idx)}
+                                    isCorrect={
+                                        (correctAnswers.includes(idx) && userAnswers.includes(idx)) ||
+                                        (!correctAnswers.includes(idx) && !userAnswers.includes(idx))
+                                    }
+                                    explanation={explanations ? explanations[idx] : 'not defined'}
+                                    showFeedback={true}
+                                    onAnswerChange={() => {}}
+                                />
+                            ))}
+                        </ul>
                     </li>
                 ))}
             </ul>

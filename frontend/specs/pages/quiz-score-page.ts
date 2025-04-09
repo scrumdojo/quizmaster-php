@@ -21,6 +21,8 @@ export class QuizScorePage {
     private answerLocator = (id: number) => this.page.locator(`#answers-${id} > .answer`)
     answer = (id: number) => this.answerLocator(id).textContent()
 
-    private feedbackLocator = (id: number) => this.page.locator(`#answers-${id} > .feedback`)
-    feedback = (id: number) => this.feedbackLocator(id).textContent()
+    private totalFeedbackLocator = (id: number) => this.page.locator(`#answers-${id} > .feedback`)
+    totalFeedback = (id: number) => this.totalFeedbackLocator(id).textContent()
+
+    answersFeedbackLocator = (id: number) => this.page.locator(`#answers-${id} > .answer-list > li`)
 }
