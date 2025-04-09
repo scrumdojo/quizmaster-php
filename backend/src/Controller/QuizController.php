@@ -31,9 +31,38 @@ class QuizController extends AbstractController
     #[Route('/quiz/{id}', methods: ['GET'])]
     public function getQuiz(string $id): Response
     {
-        $questionSky = $this->quizQuestionRepository->findById(524);
-        $questionCapitalFrance = $this->quizQuestionRepository->findById(19);
-        $questionCitiesFrance = $this->quizQuestionRepository->findById(673);
+
+
+        $questionSky = [
+            'id' => 1,
+            'question' => 'What is the standard colour of sky?',
+            'answers' => ['Red', 'Blue', 'Green', 'Black'],
+            'explanations' => [],
+            'questionExplanation' => '',
+            'correctAnswers' => [1],
+        ];
+
+        $questionCapitalFrance = [
+            'id' => 2,
+            'question' => 'What is capital of France?',
+            'answers' => ['Marseille', 'Lyon', 'Paris', 'Toulouse'],
+            'explanations' => [],
+            'questionExplanation' => '',
+            'correctAnswers' => [2],
+        ];
+
+        $questionCitiesFrance = [
+            'id' => 3,
+            'question' => 'What are cities in France?',
+            'answers' => ['London', 'Lyon', 'Paris', 'Toulouse'],
+            'explanations' => [],
+            'questionExplanation' => '',
+            'correctAnswers' => [1, 2, 3],
+        ];
+
+        //$questionSky = $this->quizQuestionRepository->findById(524);
+        //$questionCapitalFrance = $this->quizQuestionRepository->findById(19);
+        //$questionCitiesFrance = $this->quizQuestionRepository->findById(673);
 
         $questions = [
             'X' => [$questionSky, $questionCapitalFrance, $questionCitiesFrance],
@@ -48,8 +77,8 @@ class QuizController extends AbstractController
      */
     private function response(array $questions): Response
     {
-        $apiModels = $this->quizQuestionMapper->mapEntitiesToApiModels($questions);
+        //$apiModels = $this->quizQuestionMapper->mapEntitiesToApiModels($questions);
 
-        return $this->json($apiModels);
+        return $this->json($questions);
     }
 }
