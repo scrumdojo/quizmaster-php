@@ -10,7 +10,7 @@ interface SubmitAndNextButtonProps {
 }
 export const SubmitAndNextButton = ({ isLastQuestion }: SubmitAndNextButtonProps) => (
     <Button
-        id="next"
+        id={isLastQuestion ? 'evaluate' : 'next'}
         type="submit"
         className={isLastQuestion ? 'submit-btn-evaluate' : 'submit-and-next-btn'}
         onClick={() => {}}
