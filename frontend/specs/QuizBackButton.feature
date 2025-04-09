@@ -33,5 +33,5 @@ Feature: Quiz back navigation
     And I click the back button
     Then I should see the "What is the standard colour of sky?" question
     Then I should see the answer "Green" selected
-    Then I should see the answered question explanation
+    Then I do not see the answer explanation
     Then I cannot change the answer
