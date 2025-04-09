@@ -20,11 +20,13 @@ export const QuizQuestionForm = (props: QuizQuestionProps) => {
 
     const [quizState, setQuizState] = useState<QuizState>([])
     const isAnswered = quizState[currentQuestionIdx] !== undefined
-
     const onSubmitted = (selectedAnswerIdxs: AnswerIdxs) => {
         const newQuizState = Array.from(quizState)
         newQuizState[currentQuestionIdx] = selectedAnswerIdxs
         setQuizState(newQuizState)
+        if (props.isEndFeedbackQuiz) {
+            onNext()
+        }
     }
 
     const onNext = () => setCurrentQuestionIdx(prev => prev + 1)
@@ -46,7 +48,12 @@ export const QuizQuestionForm = (props: QuizQuestionProps) => {
         <div>
             <h2>Quiz</h2>
             <ProgressBar current={currentQuestionIdx + 1} total={props.quiz.length} />
-            <QuestionForm key={currentQuestion.id} question={currentQuestion} onSubmitted={onSubmitted} />
+            <QuestionForm
+                key={currentQuestion.id}
+                question={currentQuestion}
+                onSubmitted={onSubmitted}
+                isEndFeedbackQuiz={props.isEndFeedbackQuiz}
+            />
             {currentQuestionIdx > 0 && <BackButton onClick={handlePreviousClick} />}
             {isAnswered &&
                 (!isLastQuestion ? <NextButton onClick={onNext} /> : <EvaluateButton onClick={onEvaluate} />)}

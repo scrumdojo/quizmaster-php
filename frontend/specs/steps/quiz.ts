@@ -16,7 +16,7 @@ Given('I visit the quiz page', async function () {
 })
 
 Given('I visit the end feedback quiz page', async function () {
-    await this.page.goto('/quiz?endfeedback=1')
+    await this.page.goto('/quiz/X?endfeedback=1')
 })
 
 Then('I should see heading "Quiz"', async function () {
@@ -30,6 +30,10 @@ Then('I see the question {string}', async function (question: string) {
 
 Then('I should see the next button', async function () {
     await expect(this.quizPage.nextButtonLocator()).toBeVisible()
+})
+
+Then('I should not see the submit button', async function () {
+    await expect(this.takeQuestionPage.submitButton()).not.toBeVisible()
 })
 
 Then('I should not see the next button', async function () {

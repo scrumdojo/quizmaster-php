@@ -7,11 +7,13 @@ import {
     QuestionCorrectness,
     QuestionExplanation,
 } from 'pages/question-take'
+import { SubmitAndNextButton } from 'pages/quiz/buttons'
 import { Fragment } from 'react'
 
 export interface QuestionFormProps {
     readonly question: QuizQuestion
     readonly onSubmitted?: (selectedAnswerIdxs: AnswerIdxs) => void
+    readonly isEndFeedbackQuiz?: boolean
 }
 
 export const QuestionForm = (props: QuestionFormProps) => {
@@ -47,7 +49,11 @@ export const QuestionForm = (props: QuestionFormProps) => {
                     ))}
                 </ul>
             </Group>
-            {!state.submitted && <input type="submit" value="Submit" className="submit-btn" />}
+            {!state.submitted && props.isEndFeedbackQuiz ? (
+                <SubmitAndNextButton />
+            ) : (
+                <input type="submit" value="Submit" className="submit-btn" id="submit-button" />
+            )}
             {state.submitted && <QuestionCorrectness isCorrect={feedback.isQuestionCorrect} />}
             {state.submitted && <QuestionExplanation text={props.question.questionExplanation} />}
         </form>

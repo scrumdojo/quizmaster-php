@@ -5,6 +5,11 @@ export const NextButton = ({ onClick }: WithOnClick) => (
         Next Question
     </Button>
 )
+export const SubmitAndNextButton = () => (
+    <Button id="next" type="submit" className="submit-and-next-btn" onClick={() => {}}>
+        Next Question
+    </Button>
+)
 
 export const BackButton = ({ onClick }: WithOnClick) => (
     <Button id="back" onClick={onClick}>
