@@ -48,39 +48,40 @@ export const QuizScore = ({ score, quizQuestionAnswered }: QuizScoreProps) => {
 
             <div>
                 <h2>Recap</h2>
-                {quizQuestionAnswered.map(({ id, question, userAnswers, answers, feedback, explanations, correctAnswers }, index) => (
-                    <div key={id} id={`answers-${id}`}>
-                        <div>
-                            <span className="totalFeedback" title={feedback}>
-                                {feedback === 'Correct' ? <Done /> : <Close />}
-                            </span>
-                            <span className="question">{question}</span>
-                        </div>
+                {quizQuestionAnswered.map(
+                    ({ id, question, userAnswers, answers, feedback, explanations, correctAnswers }, index) => (
+                        <div key={id} id={`answers-${id}`}>
+                            <div>
+                                <span className="totalFeedback" title={feedback}>
+                                    {feedback === 'Correct' ? <Done /> : <Close />}
+                                </span>
+                                <span className="question">{question}</span>
+                            </div>
 
-                        <div>
-                            <ul className="answer-list">
-                                {answers.map((answer, idx) => (
-                                    <Answer
-                                        key={answer}
-                                        isMultipleChoice={correctAnswers.length > 1}
-                                        idx={idx}
-                                        answer={answer}
-                                        checked={userAnswers.includes(idx)}
-                                        isCorrect={
-                                            (correctAnswers.includes(idx) && userAnswers.includes(idx)) ||
-                                            (!correctAnswers.includes(idx) && !userAnswers.includes(idx))
-                                        }
-                                        explanation={explanations ? explanations[idx] : 'not defined'}
-                                        showFeedback={true}
-                                        onAnswerChange={() => {}}
-                                    />
-                                ))}
-                            </ul>
+                            <div>
+                                <ul className="answer-list">
+                                    {answers.map((answer, idx) => (
+                                        <Answer
+                                            key={answer}
+                                            isMultipleChoice={correctAnswers.length > 1}
+                                            idx={idx}
+                                            answer={answer}
+                                            checked={userAnswers.includes(idx)}
+                                            isCorrect={
+                                                (correctAnswers.includes(idx) && userAnswers.includes(idx)) ||
+                                                (!correctAnswers.includes(idx) && !userAnswers.includes(idx))
+                                            }
+                                            explanation={explanations ? explanations[idx] : 'not defined'}
+                                            showFeedback={true}
+                                            onAnswerChange={() => {}}
+                                        />
+                                    ))}
+                                </ul>
+                            </div>
+                            {index < quizQuestionAnswered.length - 1 ? <hr /> : null}
                         </div>
-                        {index < quizQuestionAnswered.length - 1 ? <hr /> : null}
-                    </div>
-
-                ))}
+                    ),
+                )}
             </div>
         </>
     )
